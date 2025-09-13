@@ -1,0 +1,256 @@
+/* Giscus评论区自定义样式 - 简洁风格，与Fuwari主题协调 */
+
+main {
+  /* 语法高亮颜色 */
+  --color-prettylights-syntax-comment: #6e7781;
+  --color-prettylights-syntax-constant: #0550ae;
+  --color-prettylights-syntax-entity: #8250df;
+  --color-prettylights-syntax-storage-modifier-import: #24292f;
+  --color-prettylights-syntax-entity-tag: #116329;
+  --color-prettylights-syntax-keyword: #cf222e;
+  --color-prettylights-syntax-string: #0a3069;
+  --color-prettylights-syntax-variable: #953800;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
+  --color-prettylights-syntax-invalid-illegal-text: #f6f8fa;
+  --color-prettylights-syntax-invalid-illegal-bg: #82071e;
+  --color-prettylights-syntax-carriage-return-text: #f6f8fa;
+  --color-prettylights-syntax-carriage-return-bg: #cf222e;
+  --color-prettylights-syntax-string-regexp: #116329;
+  --color-prettylights-syntax-markup-list: #3b2300;
+  --color-prettylights-syntax-markup-heading: #0550ae;
+  --color-prettylights-syntax-markup-italic: #24292f;
+  --color-prettylights-syntax-markup-bold: #24292f;
+  --color-prettylights-syntax-markup-deleted-text: #82071e;
+  --color-prettylights-syntax-markup-deleted-bg: #ffebe9;
+  --color-prettylights-syntax-markup-inserted-text: #116329;
+  --color-prettylights-syntax-markup-inserted-bg: #dafbe1;
+  --color-prettylights-syntax-markup-changed-text: #953800;
+  --color-prettylights-syntax-markup-changed-bg: #ffd8b5;
+  --color-prettylights-syntax-markup-ignored-text: #eaeef2;
+  --color-prettylights-syntax-markup-ignored-bg: #0550ae;
+  --color-prettylights-syntax-meta-diff-range: #8250df;
+  --color-prettylights-syntax-brackethighlighter-angle: #57606a;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
+  --color-prettylights-syntax-constant-other-reference-link: #0a3069;
+  
+  /* 按钮样式 - 简洁风格 */
+  --color-btn-text: #24292f;
+  --color-btn-bg: #f6f8fa;
+  --color-btn-border: rgba(255, 255, 255, 0.3);
+  --color-btn-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+  --color-btn-inset-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  --color-btn-hover-bg: #f3f4f6;
+  --color-btn-hover-border: rgba(255, 255, 255, 0.3);
+  --color-btn-active-bg: #ebecf0;
+  --color-btn-active-border: rgba(255, 255, 255, 0.3);
+  --color-btn-selected-bg: #eeeff2;
+  
+  /* 主要按钮样式 - 使用主题色 */
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: hsl(var(--hue, 275), 70%, 60%);
+  --color-btn-primary-border: hsl(var(--hue, 275), 70%, 60%);
+  --color-btn-primary-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  --color-btn-primary-inset-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  --color-btn-primary-hover-bg: hsl(var(--hue, 275), 75%, 65%);
+  --color-btn-primary-hover-border: hsl(var(--hue, 275), 75%, 65%);
+  --color-btn-primary-selected-bg: hsl(var(--hue, 275), 65%, 55%);
+  --color-btn-primary-selected-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
+  --color-btn-primary-disabled-text: rgba(255, 255, 255, 0.8);
+  --color-btn-primary-disabled-bg: hsl(var(--hue, 275), 70%, 60%, 0.6);
+  --color-btn-primary-disabled-border: hsl(var(--hue, 275), 70%, 60%, 0.1);
+  
+  /* 动作列表项 */
+  --color-action-list-item-default-hover-bg: rgba(208, 215, 222, 0.32);
+  
+  /* 分段控件 */
+  --color-segmented-control-bg: #eaeef2;
+  --color-segmented-control-button-bg: #fff;
+  --color-segmented-control-button-selected-border: #8c959f;
+  
+  /* 前景色 */
+  --color-fg-default: #1f2328;
+  --color-fg-muted: #656d76;
+  --color-fg-subtle: #6e7781;
+  
+  /* 画布色 - 简洁风格 */
+  --color-canvas-default: #ffffff;
+  --color-canvas-overlay: #ffffff;
+  --color-canvas-inset: #f6f8fa;
+  --color-canvas-subtle: #f6f8fa;
+  
+  /* 边框色 - 简洁风格 */
+  --color-border-default: #d0d7de;
+  --color-border-muted: #d8dee4;
+  
+  /* 中性色 */
+  --color-neutral-muted: rgba(175, 184, 193, 0.2);
+  
+  /* 强调色 - 使用主题色 */
+  --color-accent-fg: hsl(var(--hue, 275), 70%, 60%);
+  --color-accent-emphasis: hsl(var(--hue, 275), 70%, 55%);
+  --color-accent-muted: hsla(var(--hue, 275), 70%, 60%, 0.4);
+  --color-accent-subtle: hsla(var(--hue, 275), 70%, 60%, 0.1);
+  
+  /* 成功色 */
+  --color-success-fg: #1a7f37;
+  
+  /* 警告色 */
+  --color-attention-fg: #9a6700;
+  --color-attention-muted: rgba(212, 167, 44, 0.4);
+  --color-attention-subtle: #fff8c5;
+  
+  /* 危险色 */
+  --color-danger-fg: #d1242f;
+  --color-danger-muted: rgba(255, 129, 130, 0.4);
+  --color-danger-subtle: #ffebe9;
+  
+  /* 阴影 */
+  --color-primer-shadow-inset: inset 0 1px 0 rgba(208, 215, 222, 0.2);
+  
+  /* 灰色和蓝色 */
+  --color-scale-gray-1: #eaeef2;
+  --color-scale-blue-1: #b6e3ff;
+  
+  /* 社交反应背景色 */
+  --color-social-reaction-bg-hover: var(--color-scale-gray-1);
+  --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1);
+}
+
+/* 暗色模式 */
+@media (prefers-color-scheme: dark) {
+  main {
+    /* 语法高亮颜色 */
+    --color-prettylights-syntax-comment: #8b949e;
+    --color-prettylights-syntax-constant: #79c0ff;
+    --color-prettylights-syntax-entity: #d2a8ff;
+    --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+    --color-prettylights-syntax-entity-tag: #7ee787;
+    --color-prettylights-syntax-keyword: #ff7b72;
+    --color-prettylights-syntax-string: #a5d6ff;
+    --color-prettylights-syntax-variable: #ffa657;
+    --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+    --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+    --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+    --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+    --color-prettylights-syntax-carriage-return-bg: #b62324;
+    --color-prettylights-syntax-string-regexp: #7ee787;
+    --color-prettylights-syntax-markup-list: #f2cc60;
+    --color-prettylights-syntax-markup-heading: #1f6feb;
+    --color-prettylights-syntax-markup-italic: #c9d1d9;
+    --color-prettylights-syntax-markup-bold: #c9d1d9;
+    --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+    --color-prettylights-syntax-markup-deleted-bg: #67060c;
+    --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+    --color-prettylights-syntax-markup-inserted-bg: #033a16;
+    --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+    --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+    --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+    --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+    --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+    --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+    --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+    --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+    
+    /* 按钮样式 - 暗色模式 */
+    --color-btn-text: #c9d1d9;
+    --color-btn-bg: #21262d;
+    --color-btn-border: rgba(255, 255, 255, 0.1);
+    --color-btn-shadow: 0 0 #0000;
+    --color-btn-inset-shadow: 0 0 #0000;
+    --color-btn-hover-bg: #30363d;
+    --color-btn-hover-border: rgba(255, 255, 255, 0.1);
+    --color-btn-active-bg: #282e33;
+    --color-btn-active-border: rgba(255, 255, 255, 0.1);
+    --color-btn-selected-bg: #161b22;
+    
+    /* 主要按钮样式 - 暗色模式主题色 */
+    --color-btn-primary-text: #ffffff;
+    --color-btn-primary-bg: hsl(var(--hue, 275), 70%, 60%);
+    --color-btn-primary-border: hsl(var(--hue, 275), 70%, 60%);
+    --color-btn-primary-shadow: 0 0 #0000;
+    --color-btn-primary-inset-shadow: 0 0 #0000;
+    --color-btn-primary-hover-bg: hsl(var(--hue, 275), 75%, 65%);
+    --color-btn-primary-hover-border: hsl(var(--hue, 275), 75%, 65%);
+    --color-btn-primary-selected-bg: hsl(var(--hue, 275), 65%, 55%);
+    --color-btn-primary-selected-shadow: 0 0 #0000;
+    --color-btn-primary-disabled-text: rgba(255, 255, 255, 0.5);
+    --color-btn-primary-disabled-bg: hsl(var(--hue, 275), 70%, 60%, 0.6);
+    --color-btn-primary-disabled-border: hsl(var(--hue, 275), 70%, 60%, 0.1);
+    
+    /* 动作列表项 */
+    --color-action-list-item-default-hover-bg: rgba(177, 186, 196, 0.12);
+    
+    /* 分段控件 */
+    --color-segmented-control-bg: rgba(110, 118, 129, 0.1);
+    --color-segmented-control-button-bg: #0d1117;
+    --color-segmented-control-button-selected-border: #6e7681;
+    
+    /* 前景色 */
+    --color-fg-default: #e6edf3;
+    --color-fg-muted: #7d8590;
+    --color-fg-subtle: #6e7681;
+    
+    /* 画布色 - 暗色模式 */
+    --color-canvas-default: #0d1117;
+    --color-canvas-overlay: #161b22;
+    --color-canvas-inset: #010409;
+    --color-canvas-subtle: #161b22;
+    
+    /* 边框色 - 暗色模式 */
+    --color-border-default: #30363d;
+    --color-border-muted: #21262d;
+    
+    /* 中性色 */
+    --color-neutral-muted: rgba(110, 118, 129, 0.4);
+    
+    /* 强调色 - 暗色模式主题色 */
+    --color-accent-fg: hsl(var(--hue, 275), 70%, 60%);
+    --color-accent-emphasis: hsl(var(--hue, 275), 70%, 55%);
+    --color-accent-muted: hsla(var(--hue, 275), 70%, 60%, 0.4);
+    --color-accent-subtle: hsla(var(--hue, 275), 70%, 60%, 0.1);
+    
+    /* 成功色 */
+    --color-success-fg: #3fb950;
+    
+    /* 警告色 */
+    --color-attention-fg: #d29922;
+    --color-attention-muted: rgba(187, 128, 9, 0.4);
+    --color-attention-subtle: rgba(187, 128, 9, 0.15);
+    
+    /* 危险色 */
+    --color-danger-fg: #f85149;
+    --color-danger-muted: rgba(248, 81, 73, 0.4);
+    --color-danger-subtle: rgba(248, 81, 73, 0.1);
+    
+    /* 阴影 */
+    --color-primer-shadow-inset: 0 0 #0000;
+    
+    /* 灰色和蓝色 */
+    --color-scale-gray-7: #21262d;
+    --color-scale-blue-8: #0c2d6b;
+    
+    /* 社交反应背景色 */
+    --color-social-reaction-bg-hover: var(--color-scale-gray-7);
+    --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-8);
+  }
+}
+
+/* 加载动画容器 */
+main .pagination-loader-container {
+  background-image: url(https://github.com/images/modules/pulls/progressive-disclosure-line.svg);
+}
+
+main .gsc-loading-image {
+  background-image: url(https://github.githubassets.com/images/mona-loading-default.gif);
+}
+
+/* 暗色模式加载动画 */
+@media (prefers-color-scheme: dark) {
+  main .pagination-loader-container {
+    background-image: url(https://github.com/images/modules/pulls/progressive-disclosure-line-dark.svg);
+  }
+  
+  main .gsc-loading-image {
+    background-image: url(https://github.githubassets.com/images/mona-loading-dark.gif);
+  }
+}
