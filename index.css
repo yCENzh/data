@@ -1,266 +1,471 @@
-/* Giscus评论区自定义样式 - 动态适应Fuwari主题 */
+/* Giscus 自定义主题 - Fuwari 风格 */
 
-/* ==================== 变量定义 ==================== */
+/* ==================== 主题变量定义 ==================== */
 main {
-  /* 核心主题色 - 简化变量定义 */
-  --gsc-hue: var(--hue, 275);
-  --gsc-primary: hsl(var(--gsc-hue), 70%, 60%);
-  --gsc-primary-hover: hsl(var(--gsc-hue), 75%, 65%);
-  --gsc-primary-active: hsl(var(--gsc-hue), 65%, 55%);
+  /* 核心色彩系统 - 使用 Fuwari 的紫色调 */
+  --color-prettylights-syntax-comment: #8b949e;
+  --color-prettylights-syntax-constant: #79c0ff;
+  --color-prettylights-syntax-entity: #d2a8ff;
+  --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+  --color-prettylights-syntax-entity-tag: #7ee787;
+  --color-prettylights-syntax-keyword: #ff7b72;
+  --color-prettylights-syntax-string: #a5d6ff;
+  --color-prettylights-syntax-variable: #ffa657;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+  --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+  --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+  --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+  --color-prettylights-syntax-carriage-return-bg: #b62324;
+  --color-prettylights-syntax-string-regexp: #7ee787;
+  --color-prettylights-syntax-markup-list: #f2cc60;
+  --color-prettylights-syntax-markup-heading: #1f6feb;
+  --color-prettylights-syntax-markup-italic: #c9d1d9;
+  --color-prettylights-syntax-markup-bold: #c9d1d9;
+  --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+  --color-prettylights-syntax-markup-deleted-bg: rgba(248, 81, 73, 0.15);
+  --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+  --color-prettylights-syntax-markup-inserted-bg: rgba(63, 185, 80, 0.15);
+  --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+  --color-prettylights-syntax-markup-changed-bg: rgba(255, 182, 77, 0.15);
+  --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+  --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+  --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+  --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+  --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
   
-  /* 背景和文本色 */
-  --gsc-bg-primary: var(--card-bg, #0d1117);
-  --gsc-bg-secondary: var(--card-bg, #161b22);
-  --gsc-bg-tertiary: var(--background-color, #161b22);
-  --gsc-text-primary: var(--primary-text, #e6edf3);
-  --gsc-text-secondary: var(--secondary-text, #7d8590);
-  --gsc-border: var(--border-color, #30363d);
+  /* 按钮样式 - 柔和的紫色调 */
+  --color-btn-text: #e6edf3;
+  --color-btn-bg: rgba(33, 38, 45, 0.5);
+  --color-btn-border: rgba(48, 54, 61, 0.3);
+  --color-btn-shadow: 0 0 transparent;
+  --color-btn-inset-shadow: 0 0 transparent;
+  --color-btn-hover-bg: rgba(48, 54, 61, 0.6);
+  --color-btn-hover-border: rgba(139, 148, 158, 0.3);
+  --color-btn-active-bg: rgba(40, 46, 51, 0.7);
+  --color-btn-active-border: rgba(110, 118, 129, 0.4);
+  --color-btn-selected-bg: rgba(22, 27, 34, 0.6);
   
-  /* 语义化颜色 */
-  --gsc-success: #3fb950;
-  --gsc-warning: #d29922;
-  --gsc-danger: #f85149;
+  /* 主要按钮 - 渐变紫色 */
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --color-btn-primary-border: rgba(102, 126, 234, 0.5);
+  --color-btn-primary-shadow: 0 0 transparent;
+  --color-btn-primary-inset-shadow: 0 0 transparent;
+  --color-btn-primary-hover-bg: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  --color-btn-primary-hover-border: rgba(118, 75, 162, 0.5);
+  --color-btn-primary-selected-bg: linear-gradient(135deg, #5a4c8a 0%, #554d9e 100%);
+  --color-btn-primary-selected-shadow: 0 0 transparent;
+  --color-btn-primary-disabled-text: rgba(255, 255, 255, 0.5);
+  --color-btn-primary-disabled-bg: rgba(102, 126, 234, 0.3);
+  --color-btn-primary-disabled-border: rgba(102, 126, 234, 0.1);
   
-  /* 动画和过渡 */
-  --gsc-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --gsc-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-  --gsc-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
-  --gsc-shadow-lg: 0 6px 20px rgba(0, 0, 0, 0.2);
+  /* 动作列表项 */
+  --color-action-list-item-default-hover-bg: rgba(177, 186, 196, 0.12);
   
-  /* 间距 */
-  --gsc-radius-sm: 4px;
-  --gsc-radius-md: 8px;
-  --gsc-radius-lg: 12px;
+  /* 分段控件 */
+  --color-segmented-control-bg: rgba(110, 118, 129, 0.1);
+  --color-segmented-control-button-bg: rgba(13, 17, 23, 0.9);
+  --color-segmented-control-button-selected-border: rgba(110, 118, 129, 0.4);
+  
+  /* 前景色 */
+  --color-fg-default: #e6edf3;
+  --color-fg-muted: #848d97;
+  --color-fg-subtle: #6e7681;
+  
+  /* 画布色 - 半透明背景 */
+  --color-canvas-default: rgba(13, 17, 23, 0.3);
+  --color-canvas-overlay: rgba(22, 27, 34, 0.5);
+  --color-canvas-inset: rgba(1, 4, 9, 0.5);
+  --color-canvas-subtle: rgba(22, 27, 34, 0.3);
+  
+  /* 边框色 - 更柔和 */
+  --color-border-default: rgba(48, 54, 61, 0.3);
+  --color-border-muted: rgba(33, 38, 45, 0.3);
+  
+  /* 中性色 */
+  --color-neutral-muted: rgba(110, 118, 129, 0.4);
+  
+  /* 强调色 - 紫色主题 */
+  --color-accent-fg: #a78bfa;
+  --color-accent-emphasis: #8b5cf6;
+  --color-accent-muted: rgba(167, 139, 250, 0.4);
+  --color-accent-subtle: rgba(167, 139, 250, 0.1);
+  
+  /* 成功、警告、危险色 */
+  --color-success-fg: #3fb950;
+  --color-attention-fg: #d29922;
+  --color-attention-muted: rgba(187, 128, 9, 0.4);
+  --color-attention-subtle: rgba(187, 128, 9, 0.15);
+  --color-danger-fg: #f85149;
+  --color-danger-muted: rgba(248, 81, 73, 0.4);
+  --color-danger-subtle: rgba(248, 81, 73, 0.1);
+  
+  /* 其他 */
+  --color-primer-shadow-inset: 0 0 transparent;
+  --color-scale-gray-7: rgba(33, 38, 45, 0.8);
+  --color-scale-blue-8: rgba(12, 45, 107, 0.8);
+  
+  /* 社交反应背景色 */
+  --color-social-reaction-bg-hover: rgba(33, 38, 45, 0.5);
+  --color-social-reaction-bg-reacted-hover: rgba(12, 45, 107, 0.5);
 }
 
-/* ==================== 基础样式 ==================== */
-
-/* 评论框容器 */
-main .gsc-comment-box {
-  border-radius: var(--gsc-radius-lg);
-  border: 1px solid var(--gsc-border);
-  background: var(--gsc-bg-secondary);
-  box-shadow: var(--gsc-shadow-sm);
-  margin-bottom: 1.5rem;
-  transition: var(--gsc-transition);
+/* ==================== 整体容器 ==================== */
+/* 让 Giscus 背景透明，融入页面 */
+.gsc-main {
+  padding: 0 !important;
 }
 
-main .gsc-comment-box:hover {
-  box-shadow: var(--gsc-shadow-md);
-  transform: translateY(-1px);
+/* ==================== 评论框美化 ==================== */
+.gsc-comment-box {
+  border: none !important;
+  background: rgba(13, 17, 23, 0.4) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-radius: 16px !important;
+  padding: 1.5rem !important;
+  margin-bottom: 2rem !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-/* 文本框 */
-main .gsc-comment-box-textarea {
-  border-radius: var(--gsc-radius-md);
-  border: 1px solid var(--gsc-border);
-  background: var(--gsc-bg-primary);
-  color: var(--gsc-text-primary);
-  font-family: system-ui, -apple-system, sans-serif;
-  padding: 1rem;
-  transition: var(--gsc-transition);
+.gsc-comment-box-tabs {
+  border-bottom: 1px solid rgba(48, 54, 61, 0.2) !important;
+  margin-bottom: 1rem !important;
 }
 
-main .gsc-comment-box-textarea:focus {
-  border-color: var(--gsc-primary);
-  box-shadow: 0 0 0 2px hsla(var(--gsc-hue), 70%, 60%, 0.2);
-  outline: none;
+.gsc-comment-box-textarea,
+.gsc-comment-box-preview {
+  background: rgba(13, 17, 23, 0.3) !important;
+  border: 1px solid rgba(48, 54, 61, 0.2) !important;
+  border-radius: 12px !important;
+  color: #e6edf3 !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  padding: 12px 16px !important;
+  transition: all 0.2s ease !important;
 }
 
-/* ==================== 按钮样式 ==================== */
-main .gsc-comment-box-buttons button,
-main .gsc-pagination-button {
-  border-radius: var(--gsc-radius-md);
-  border: 1px solid var(--gsc-primary);
-  background: var(--gsc-primary);
-  color: white;
-  padding: 0.5rem 1.2rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: var(--gsc-transition);
-  position: relative;
-  overflow: hidden;
+.gsc-comment-box-textarea:focus {
+  background: rgba(13, 17, 23, 0.5) !important;
+  border-color: #a78bfa !important;
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.1) !important;
+  outline: none !important;
 }
 
-/* 按钮悬停效果 - 使用伪元素代替transform提升性能 */
-main .gsc-comment-box-buttons button::before,
-main .gsc-pagination-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1));
-  transform: translateX(-100%);
-  transition: transform 0.3s;
+/* Markdown 预览优化 */
+.gsc-comment-box-preview {
+  padding: 16px !important;
 }
 
-main .gsc-comment-box-buttons button:hover::before,
-main .gsc-pagination-button:hover::before {
-  transform: translateX(100%);
+/* ==================== 按钮美化 ==================== */
+.gsc-comment-box-buttons {
+  display: flex !important;
+  gap: 12px !important;
+  margin-top: 12px !important;
 }
 
-main .gsc-comment-box-buttons button:hover,
-main .gsc-pagination-button:hover {
-  background: var(--gsc-primary-hover);
-  border-color: var(--gsc-primary-hover);
+/* 主要按钮 */
+button.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  color: white !important;
+  font-weight: 500 !important;
+  padding: 8px 20px !important;
+  font-size: 14px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
 }
 
-main .gsc-comment-box-buttons button:active,
-main .gsc-pagination-button:active {
-  background: var(--gsc-primary-active);
-  transform: scale(0.98);
+button.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4) !important;
 }
 
-/* ==================== 评论项 ==================== */
-main .gsc-comment {
-  border-radius: var(--gsc-radius-lg);
-  background: var(--gsc-bg-secondary);
-  border: 1px solid var(--gsc-border);
-  margin-top: 1.5rem;
-  padding: 1rem;
-  transition: var(--gsc-transition);
-  box-shadow: var(--gsc-shadow-sm);
+button.btn-primary:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
 }
 
-main .gsc-comment:hover {
-  box-shadow: var(--gsc-shadow-md);
+/* 次要按钮 */
+.btn:not(.btn-primary) {
+  background: rgba(33, 38, 45, 0.5) !important;
+  border: 1px solid rgba(48, 54, 61, 0.3) !important;
+  border-radius: 10px !important;
+  color: #e6edf3 !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  transition: all 0.2s ease !important;
 }
 
-/* 头像 - 简化动画 */
-main .gsc-comment-author-avatar img {
-  border-radius: 50%;
-  border: 2px solid var(--gsc-primary);
-  transition: var(--gsc-transition);
-  box-shadow: var(--gsc-shadow-sm);
+.btn:not(.btn-primary):hover {
+  background: rgba(48, 54, 61, 0.6) !important;
+  border-color: rgba(139, 148, 158, 0.3) !important;
 }
 
-main .gsc-comment-author-avatar img:hover {
-  transform: scale(1.05);
-  box-shadow: var(--gsc-shadow-md);
+/* ==================== 评论项美化 ==================== */
+.gsc-comment {
+  background: rgba(13, 17, 23, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(48, 54, 61, 0.2) !important;
+  border-radius: 16px !important;
+  padding: 20px !important;
+  margin-bottom: 16px !important;
+  transition: all 0.3s ease !important;
 }
 
-/* ==================== Markdown内容 ==================== */
-main .gsc-comment-content pre {
-  background: var(--gsc-bg-primary);
-  border-radius: var(--gsc-radius-md);
-  border: 1px solid var(--gsc-border);
-  padding: 1rem;
-  overflow-x: auto;
+.gsc-comment:hover {
+  background: rgba(13, 17, 23, 0.4) !important;
+  border-color: rgba(167, 139, 250, 0.2) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
 }
 
-main .gsc-comment-content code {
-  background: var(--gsc-bg-primary);
-  color: var(--gsc-primary);
-  padding: 0.2em 0.4em;
-  border-radius: var(--gsc-radius-sm);
-  font-size: 0.9em;
+/* 评论头部 */
+.gsc-comment-header {
+  display: flex !important;
+  align-items: center !important;
+  margin-bottom: 12px !important;
 }
 
-/* 链接优化 */
-main .gsc-comment-content a {
-  color: var(--gsc-primary);
-  text-decoration: none;
-  position: relative;
-  transition: var(--gsc-transition);
+/* 头像 */
+.gsc-comment-author-avatar img,
+.gsc-comment-box-avatar img {
+  border-radius: 50% !important;
+  border: 2px solid rgba(167, 139, 250, 0.3) !important;
+  transition: all 0.3s ease !important;
 }
 
-main .gsc-comment-content a::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--gsc-primary);
-  transition: width 0.2s;
+.gsc-comment-author-avatar:hover img,
+.gsc-comment-box-avatar:hover img {
+  border-color: #a78bfa !important;
+  transform: scale(1.1) !important;
 }
 
-main .gsc-comment-content a:hover::after {
-  width: 100%;
+/* 评论内容 */
+.gsc-comment-content {
+  color: #e6edf3 !important;
+  line-height: 1.7 !important;
 }
 
-/* ==================== 加载动画 ==================== */
-main .pagination-loader-container {
-  background-image: url(https://github.com/images/modules/pulls/progressive-disclosure-line-dark.svg);
+/* 评论元信息 */
+.gsc-comment-meta {
+  color: #848d97 !important;
+  font-size: 13px !important;
 }
 
-main .gsc-loading-image {
-  background-image: url(https://github.githubassets.com/images/mona-loading-dark.gif);
+/* 时间链接 */
+time-ago, relative-time {
+  color: #848d97 !important;
 }
 
-/* ==================== 响应式设计 ==================== */
+/* ==================== Markdown 内容样式 ==================== */
+.markdown {
+  color: #e6edf3 !important;
+}
+
+.markdown h1, .markdown h2, .markdown h3, 
+.markdown h4, .markdown h5, .markdown h6 {
+  color: #e6edf3 !important;
+  font-weight: 600 !important;
+  margin-top: 24px !important;
+  margin-bottom: 16px !important;
+}
+
+.markdown a {
+  color: #a78bfa !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.markdown a:hover {
+  color: #8b5cf6 !important;
+  text-decoration: underline !important;
+}
+
+.markdown code {
+  background: rgba(167, 139, 250, 0.1) !important;
+  color: #d2a8ff !important;
+  padding: 2px 6px !important;
+  border-radius: 6px !important;
+  font-size: 0.9em !important;
+}
+
+.markdown pre {
+  background: rgba(13, 17, 23, 0.5) !important;
+  border: 1px solid rgba(48, 54, 61, 0.3) !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  overflow-x: auto !important;
+}
+
+.markdown pre code {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.markdown blockquote {
+  border-left: 4px solid #a78bfa !important;
+  padding-left: 16px !important;
+  color: #848d97 !important;
+  margin: 16px 0 !important;
+}
+
+.markdown table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  margin: 16px 0 !important;
+}
+
+.markdown table th,
+.markdown table td {
+  border: 1px solid rgba(48, 54, 61, 0.3) !important;
+  padding: 8px 12px !important;
+}
+
+.markdown table th {
+  background: rgba(167, 139, 250, 0.1) !important;
+  font-weight: 600 !important;
+}
+
+.markdown hr {
+  border: none !important;
+  border-top: 1px solid rgba(48, 54, 61, 0.3) !important;
+  margin: 24px 0 !important;
+}
+
+/* ==================== 反应（Reactions）==================== */
+.gsc-reactions-button {
+  background: rgba(33, 38, 45, 0.3) !important;
+  border: 1px solid rgba(48, 54, 61, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 4px 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.gsc-reactions-button:hover {
+  background: rgba(48, 54, 61, 0.4) !important;
+  border-color: rgba(167, 139, 250, 0.3) !important;
+}
+
+.gsc-reactions-button.has-reacted {
+  background: rgba(167, 139, 250, 0.2) !important;
+  border-color: #a78bfa !important;
+}
+
+/* ==================== 分页 ==================== */
+.gsc-pagination {
+  display: flex !important;
+  gap: 8px !important;
+  margin-top: 24px !important;
+}
+
+.gsc-pagination-button {
+  background: rgba(33, 38, 45, 0.5) !important;
+  border: 1px solid rgba(48, 54, 61, 0.3) !important;
+  border-radius: 10px !important;
+  color: #e6edf3 !important;
+  padding: 8px 16px !important;
+  transition: all 0.2s ease !important;
+}
+
+.gsc-pagination-button:hover:not(:disabled) {
+  background: rgba(48, 54, 61, 0.6) !important;
+  border-color: rgba(167, 139, 250, 0.3) !important;
+}
+
+.gsc-pagination-button:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+/* ==================== 加载状态 ==================== */
+.gsc-loading {
+  color: #848d97 !important;
+}
+
+.gsc-loading-image {
+  background-image: url(https://github.githubassets.com/images/mona-loading-dark.gif) !important;
+}
+
+/* ==================== 空状态 ==================== */
+.gsc-empty {
+  text-align: center !important;
+  color: #848d97 !important;
+  padding: 40px 20px !important;
+}
+
+/* ==================== 响应式优化 ==================== */
 @media (max-width: 768px) {
-  main .gsc-comment-box-textarea {
-    min-height: 100px;
-    padding: 0.8rem;
+  .gsc-comment-box {
+    padding: 1rem !important;
   }
   
-  main .gsc-comment {
-    padding: 0.8rem;
-    margin-top: 1rem;
+  .gsc-comment {
+    padding: 16px !important;
   }
   
-  main .gsc-comment-box-buttons button,
-  main .gsc-pagination-button {
-    padding: 0.4rem 1rem;
-    font-size: 0.85rem;
-  }
-}
-
-/* 小屏幕优化 */
-@media (max-width: 480px) {
-  main .gsc-comment-box-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  .gsc-comment-box-textarea {
+    min-height: 100px !important;
   }
   
-  main .gsc-comment-box-buttons button {
-    width: 100%;
+  button {
+    font-size: 13px !important;
+    padding: 6px 12px !important;
   }
 }
 
-/* ==================== 深色/浅色主题支持 ==================== */
-@media (prefers-color-scheme: light) {
-  main {
-    --gsc-bg-primary: var(--card-bg, #ffffff);
-    --gsc-bg-secondary: var(--card-bg, #f6f8fa);
-    --gsc-text-primary: var(--primary-text, #24292f);
-    --gsc-text-secondary: var(--secondary-text, #57606a);
-    --gsc-border: var(--border-color, #d1d5da);
+/* ==================== 滚动条美化 ==================== */
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(13, 17, 23, 0.3) !important;
+  border-radius: 4px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(167, 139, 250, 0.3) !important;
+  border-radius: 4px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(167, 139, 250, 0.5) !important;
+}
+
+/* ==================== 动画效果 ==================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* ==================== 性能优化 ==================== */
-/* 使用 will-change 优化动画性能 */
-main .gsc-comment-box,
-main .gsc-comment,
-main .gsc-comment-author-avatar img {
-  will-change: transform, box-shadow;
+.gsc-comment,
+.gsc-comment-box {
+  animation: fadeIn 0.3s ease-out !important;
 }
 
-/* 动画完成后移除 will-change */
-main .gsc-comment-box:not(:hover),
-main .gsc-comment:not(:hover),
-main .gsc-comment-author-avatar img:not(:hover) {
-  will-change: auto;
+/* ==================== 高对比度支持 ==================== */
+@media (prefers-contrast: high) {
+  .gsc-comment-box,
+  .gsc-comment {
+    border-width: 2px !important;
+  }
 }
 
-/* ==================== 辅助功能 ==================== */
-/* 确保焦点状态可见 */
-main *:focus-visible {
-  outline: 2px solid var(--gsc-primary);
-  outline-offset: 2px;
-}
-
-/* 减少动画（用户偏好） */
+/* ==================== 减少动画 ==================== */
 @media (prefers-reduced-motion: reduce) {
-  main * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  * {
+    animation: none !important;
+    transition: none !important;
   }
-}
+                                }
