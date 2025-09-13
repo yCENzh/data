@@ -1,0 +1,266 @@
+/* Giscus评论区自定义样式 - 动态适应Fuwari主题 */
+
+/* ==================== 变量定义 ==================== */
+main {
+  /* 核心主题色 - 简化变量定义 */
+  --gsc-hue: var(--hue, 275);
+  --gsc-primary: hsl(var(--gsc-hue), 70%, 60%);
+  --gsc-primary-hover: hsl(var(--gsc-hue), 75%, 65%);
+  --gsc-primary-active: hsl(var(--gsc-hue), 65%, 55%);
+  
+  /* 背景和文本色 */
+  --gsc-bg-primary: var(--card-bg, #0d1117);
+  --gsc-bg-secondary: var(--card-bg, #161b22);
+  --gsc-bg-tertiary: var(--background-color, #161b22);
+  --gsc-text-primary: var(--primary-text, #e6edf3);
+  --gsc-text-secondary: var(--secondary-text, #7d8590);
+  --gsc-border: var(--border-color, #30363d);
+  
+  /* 语义化颜色 */
+  --gsc-success: #3fb950;
+  --gsc-warning: #d29922;
+  --gsc-danger: #f85149;
+  
+  /* 动画和过渡 */
+  --gsc-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --gsc-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --gsc-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --gsc-shadow-lg: 0 6px 20px rgba(0, 0, 0, 0.2);
+  
+  /* 间距 */
+  --gsc-radius-sm: 4px;
+  --gsc-radius-md: 8px;
+  --gsc-radius-lg: 12px;
+}
+
+/* ==================== 基础样式 ==================== */
+
+/* 评论框容器 */
+main .gsc-comment-box {
+  border-radius: var(--gsc-radius-lg);
+  border: 1px solid var(--gsc-border);
+  background: var(--gsc-bg-secondary);
+  box-shadow: var(--gsc-shadow-sm);
+  margin-bottom: 1.5rem;
+  transition: var(--gsc-transition);
+}
+
+main .gsc-comment-box:hover {
+  box-shadow: var(--gsc-shadow-md);
+  transform: translateY(-1px);
+}
+
+/* 文本框 */
+main .gsc-comment-box-textarea {
+  border-radius: var(--gsc-radius-md);
+  border: 1px solid var(--gsc-border);
+  background: var(--gsc-bg-primary);
+  color: var(--gsc-text-primary);
+  font-family: system-ui, -apple-system, sans-serif;
+  padding: 1rem;
+  transition: var(--gsc-transition);
+}
+
+main .gsc-comment-box-textarea:focus {
+  border-color: var(--gsc-primary);
+  box-shadow: 0 0 0 2px hsla(var(--gsc-hue), 70%, 60%, 0.2);
+  outline: none;
+}
+
+/* ==================== 按钮样式 ==================== */
+main .gsc-comment-box-buttons button,
+main .gsc-pagination-button {
+  border-radius: var(--gsc-radius-md);
+  border: 1px solid var(--gsc-primary);
+  background: var(--gsc-primary);
+  color: white;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--gsc-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 按钮悬停效果 - 使用伪元素代替transform提升性能 */
+main .gsc-comment-box-buttons button::before,
+main .gsc-pagination-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1));
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+}
+
+main .gsc-comment-box-buttons button:hover::before,
+main .gsc-pagination-button:hover::before {
+  transform: translateX(100%);
+}
+
+main .gsc-comment-box-buttons button:hover,
+main .gsc-pagination-button:hover {
+  background: var(--gsc-primary-hover);
+  border-color: var(--gsc-primary-hover);
+}
+
+main .gsc-comment-box-buttons button:active,
+main .gsc-pagination-button:active {
+  background: var(--gsc-primary-active);
+  transform: scale(0.98);
+}
+
+/* ==================== 评论项 ==================== */
+main .gsc-comment {
+  border-radius: var(--gsc-radius-lg);
+  background: var(--gsc-bg-secondary);
+  border: 1px solid var(--gsc-border);
+  margin-top: 1.5rem;
+  padding: 1rem;
+  transition: var(--gsc-transition);
+  box-shadow: var(--gsc-shadow-sm);
+}
+
+main .gsc-comment:hover {
+  box-shadow: var(--gsc-shadow-md);
+}
+
+/* 头像 - 简化动画 */
+main .gsc-comment-author-avatar img {
+  border-radius: 50%;
+  border: 2px solid var(--gsc-primary);
+  transition: var(--gsc-transition);
+  box-shadow: var(--gsc-shadow-sm);
+}
+
+main .gsc-comment-author-avatar img:hover {
+  transform: scale(1.05);
+  box-shadow: var(--gsc-shadow-md);
+}
+
+/* ==================== Markdown内容 ==================== */
+main .gsc-comment-content pre {
+  background: var(--gsc-bg-primary);
+  border-radius: var(--gsc-radius-md);
+  border: 1px solid var(--gsc-border);
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+main .gsc-comment-content code {
+  background: var(--gsc-bg-primary);
+  color: var(--gsc-primary);
+  padding: 0.2em 0.4em;
+  border-radius: var(--gsc-radius-sm);
+  font-size: 0.9em;
+}
+
+/* 链接优化 */
+main .gsc-comment-content a {
+  color: var(--gsc-primary);
+  text-decoration: none;
+  position: relative;
+  transition: var(--gsc-transition);
+}
+
+main .gsc-comment-content a::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gsc-primary);
+  transition: width 0.2s;
+}
+
+main .gsc-comment-content a:hover::after {
+  width: 100%;
+}
+
+/* ==================== 加载动画 ==================== */
+main .pagination-loader-container {
+  background-image: url(https://github.com/images/modules/pulls/progressive-disclosure-line-dark.svg);
+}
+
+main .gsc-loading-image {
+  background-image: url(https://github.githubassets.com/images/mona-loading-dark.gif);
+}
+
+/* ==================== 响应式设计 ==================== */
+@media (max-width: 768px) {
+  main .gsc-comment-box-textarea {
+    min-height: 100px;
+    padding: 0.8rem;
+  }
+  
+  main .gsc-comment {
+    padding: 0.8rem;
+    margin-top: 1rem;
+  }
+  
+  main .gsc-comment-box-buttons button,
+  main .gsc-pagination-button {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* 小屏幕优化 */
+@media (max-width: 480px) {
+  main .gsc-comment-box-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  main .gsc-comment-box-buttons button {
+    width: 100%;
+  }
+}
+
+/* ==================== 深色/浅色主题支持 ==================== */
+@media (prefers-color-scheme: light) {
+  main {
+    --gsc-bg-primary: var(--card-bg, #ffffff);
+    --gsc-bg-secondary: var(--card-bg, #f6f8fa);
+    --gsc-text-primary: var(--primary-text, #24292f);
+    --gsc-text-secondary: var(--secondary-text, #57606a);
+    --gsc-border: var(--border-color, #d1d5da);
+  }
+}
+
+/* ==================== 性能优化 ==================== */
+/* 使用 will-change 优化动画性能 */
+main .gsc-comment-box,
+main .gsc-comment,
+main .gsc-comment-author-avatar img {
+  will-change: transform, box-shadow;
+}
+
+/* 动画完成后移除 will-change */
+main .gsc-comment-box:not(:hover),
+main .gsc-comment:not(:hover),
+main .gsc-comment-author-avatar img:not(:hover) {
+  will-change: auto;
+}
+
+/* ==================== 辅助功能 ==================== */
+/* 确保焦点状态可见 */
+main *:focus-visible {
+  outline: 2px solid var(--gsc-primary);
+  outline-offset: 2px;
+}
+
+/* 减少动画（用户偏好） */
+@media (prefers-reduced-motion: reduce) {
+  main * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
